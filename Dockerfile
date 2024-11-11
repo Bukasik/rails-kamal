@@ -3,7 +3,7 @@
 
 # This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
 # docker build -t workshop_kamal2 .
-# docker run -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name workshop_kamal2 workshop_kamal2
+# docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name workshop_kamal2 workshop_kamal2
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
@@ -16,7 +16,7 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips  sqlite3 libpq-dev vim && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 libpq-dev vim && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
